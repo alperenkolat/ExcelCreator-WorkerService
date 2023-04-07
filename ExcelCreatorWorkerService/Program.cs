@@ -1,5 +1,7 @@
 using ExcelCreatorWorkerService;
+using ExcelCreatorWorkerService.Models;
 using ExcelCreatorWorkerService.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using RabbitMQ.Client;
@@ -9,6 +11,11 @@ IHost host = Host.CreateDefaultBuilder(args)
     {
         IConfiguration configuration = hostContext.Configuration;
 
+
+        services.AddDbContext<ExcelCreaterContext>(options => {
+
+            options.UseSqlServer(configuration.GetConnectionString("SqlServer"));
+        }) ;
         services.AddSingleton<RabbitMQClientService>();
         services.AddSingleton(sp => new ConnectionFactory()
         {

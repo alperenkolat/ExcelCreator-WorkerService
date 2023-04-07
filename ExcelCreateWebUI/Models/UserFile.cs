@@ -19,7 +19,7 @@ namespace ExcelCreateWebUI.Models
         public string FilePath { get; set; }
         public DateTime? CreatedTime { get; set; }
 
-        public FileStatus fileStatus { get; set; }
+        public FileStatus FileStatus { get; set; }
 
 
         [NotMapped]//database geçmemesi için 

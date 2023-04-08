@@ -35,7 +35,7 @@ namespace ExcelCreateWebUI.Controllers
             {
                 UserId=user.Id,
                 FileName=fileName,  
-                fileStatus=FileStatus.Creating
+                FileStatus=FileStatus.Creating
             };
             _context.userFiles.AddAsync(userFile);
 

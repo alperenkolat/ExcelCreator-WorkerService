@@ -1,4 +1,5 @@
 using ExcelCreateWebUI.Models;
+using ExcelCreatorWorkerService.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
+builder.Services.AddSignalR();
 builder.Services.AddDbContext<AppDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("Sqlserver"));
 });
@@ -60,8 +61,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<MyHub>("/MyHub");
+app.MapControllerRoute( 
 
-app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

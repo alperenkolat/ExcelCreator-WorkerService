@@ -74,7 +74,7 @@ namespace ExcelCreatorWorkerService
 
                 if (response.IsSuccessStatusCode)
                 {
-                    _logger.LogInformation($"File(ID:{excelCreaterMessage.FileID })was created by suucessful.. ");
+                    _logger.LogInformation($"File(ID:{excelCreaterMessage.FileID })was created by suucessful.. x");
                     _channel.BasicAck(@event.DeliveryTag, false);
                 }
             };
